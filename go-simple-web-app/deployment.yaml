@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-simple-web-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: go-simple-web-app
+  template:
+    metadata:
+      labels:
+        app: go-simple-web-app
+    spec:
+      containers:
+        - name: go-simple-web-app-container
+          image: zulfiqarahmed/go-simple-web-app-img
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 3000
